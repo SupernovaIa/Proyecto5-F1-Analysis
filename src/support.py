@@ -7,6 +7,7 @@ from time import sleep
 import random
 import pandas as pd
 import re
+import requests
 
 
 def get_dotd(current_year = '2024'):
@@ -108,3 +109,68 @@ def get_df_dotd(soup: BeautifulSoup):
     df_final = df_final.drop(0).rename(columns={0: 'race', 1: 'driver', 2: 'team'})
 
     return df_final
+
+
+def get_add_circuit_info(url: str):
+    """
+    Fetches and extracts specific information about a circuit from a given URL.
+
+    Parameters:
+    - url (str): The URL of the web page to scrape for circuit information.
+
+    Returns:
+    - (tuple): A tuple containing:
+        - capacity (str): The seating capacity of the circuit or 'NA' if not found.
+        - website (str): The official website of the circuit or 'NA' if not found.
+        - architect (str): The name of the architect or 'NA' if not found.
+    """
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+    else:
+        print(f"Error: {response.status_code}")
+        return
+
+    # Find table
+    table = soup.find("table", {"class": "infobox vcard"})
+
+    # If table was found, extract the info
+    if table:
+        rows = table.findAll("tr")
+
+        # Set default values
+        capacity = 'NA'
+        website = 'NA'
+        architect = 'NA'
+
+        # Go through rows
+        for row in rows:
+            header_cell = row.find("th")
+            if header_cell:
+                # Look for specific items
+                text = header_cell.text.strip().lower()
+
+                if text == 'capacity':
+                    capacity = row.find("td").text
+
+                elif text == 'website':
+                    website = row.find("td").text
+
+                elif text == 'architect':
+                    architect = row.find("td").text
+
+        return capacity, website, architect
+    
+    # If table was not found, look for proper link
+    else:
+        # Find link
+        url = soup.find('a', string=re.compile('Circuit', re.IGNORECASE)).get("href")
+        root = 'https://en.wikipedia.org'
+        # Add link root in case it's not added
+        if root not in url:
+            url = root + url
+
+        # Call function again with corrected link
+        return get_add_circuit_info(url)
