@@ -1,0 +1,23 @@
+race_id,circuit_id,raceName,season,round,url,date,driver
+2023_1,bahrain,Bahrain Grand Prix,2023,1,https://en.wikipedia.org/wiki/2023_Bahrain_Grand_Prix,2023-03-05,Fernando Alonso
+2023_2,jeddah,Saudi Arabian Grand Prix,2023,2,https://en.wikipedia.org/wiki/2023_Saudi_Arabian_Grand_Prix,2023-03-19,Max Verstappen
+2023_3,albert_park,Australian Grand Prix,2023,3,https://en.wikipedia.org/wiki/2023_Australian_Grand_Prix,2023-04-02,Sergio Perez
+2023_4,baku,Azerbaijan Grand Prix,2023,4,https://en.wikipedia.org/wiki/2023_Azerbaijan_Grand_Prix,2023-04-30,Sergio Perez
+2023_5,miami,Miami Grand Prix,2023,5,https://en.wikipedia.org/wiki/2023_Miami_Grand_Prix,2023-05-07,Max Verstappen
+2023_6,monaco,Monaco Grand Prix,2023,6,https://en.wikipedia.org/wiki/2023_Monaco_Grand_Prix,2023-05-28,Esteban Ocon
+2023_7,catalunya,Spanish Grand Prix,2023,7,https://en.wikipedia.org/wiki/2023_Spanish_Grand_Prix,2023-06-04,Lewis Hamilton
+2023_8,villeneuve,Canadian Grand Prix,2023,8,https://en.wikipedia.org/wiki/2023_Canadian_Grand_Prix,2023-06-18,Alex Albon
+2023_9,red_bull_ring,Austrian Grand Prix,2023,9,https://en.wikipedia.org/wiki/2023_Austrian_Grand_Prix,2023-07-02,Lando Norris
+2023_10,silverstone,British Grand Prix,2023,10,https://en.wikipedia.org/wiki/2023_British_Grand_Prix,2023-07-09,Lando Norris
+2023_11,hungaroring,Hungarian Grand Prix,2023,11,https://en.wikipedia.org/wiki/2023_Hungarian_Grand_Prix,2023-07-23,Sergio Perez
+2023_12,spa,Belgian Grand Prix,2023,12,https://en.wikipedia.org/wiki/2023_Belgian_Grand_Prix,2023-07-30,Max Verstappen
+2023_13,zandvoort,Dutch Grand Prix,2023,13,https://en.wikipedia.org/wiki/2023_Dutch_Grand_Prix,2023-08-27,Fernando Alonso
+2023_14,monza,Italian Grand Prix,2023,14,https://en.wikipedia.org/wiki/2023_Italian_Grand_Prix,2023-09-03,Carlos Sainz
+2023_15,marina_bay,Singapore Grand Prix,2023,15,https://en.wikipedia.org/wiki/2023_Singapore_Grand_Prix,2023-09-17,Carlos Sainz
+2023_16,suzuka,Japanese Grand Prix,2023,16,https://en.wikipedia.org/wiki/2023_Japanese_Grand_Prix,2023-09-24,Oscar Piastri
+2023_17,losail,Qatar Grand Prix,2023,17,https://en.wikipedia.org/wiki/2023_Qatar_Grand_Prix,2023-10-08,Oscar Piastri
+2023_18,americas,United States Grand Prix,2023,18,https://en.wikipedia.org/wiki/2023_United_States_Grand_Prix,2023-10-22,Lando Norris
+2023_19,rodriguez,Mexico City Grand Prix,2023,19,https://en.wikipedia.org/wiki/2023_Mexico_City_Grand_Prix,2023-10-29,Lando Norris
+2023_20,interlagos,São Paulo Grand Prix,2023,20,https://en.wikipedia.org/wiki/2023_S%C3%A3o_Paulo_Grand_Prix,2023-11-05,Lando Norris
+2023_21,vegas,Las Vegas Grand Prix,2023,21,https://en.wikipedia.org/wiki/2023_Las_Vegas_Grand_Prix,2023-11-19,Charles Leclerc
+2023_22,yas_marina,Abu Dhabi Grand Prix,2023,22,https://en.wikipedia.org/wiki/2023_Abu_Dhabi_Grand_Prix,2023-11-26,Yuki Tsunoda

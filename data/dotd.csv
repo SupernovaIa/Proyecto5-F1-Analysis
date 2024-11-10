@@ -1,167 +1,23 @@
-race,driver,team,year
-Australia,Romain Grosjean,Haas,2016
-Bahrain,Romain Grosjean,Haas,2016
-China,Daniil Kvyat,Red Bull Racing,2016
-Russia,Kevin Magnussen,Renault,2016
-Spain,Max Verstappen,Red Bull Racing,2016
-Monaco,Sergio Perez,Force India,2016
-Canada,Max Verstappen,Red Bull Racing,2016
-Europe,Sergio Perez,Force India,2016
-Austria,Max Verstappen,Red Bull Racing,2016
-Great Britain,Max Verstappen,Red Bull Racing,2016
-Hungary,Kimi Raikkonen,Ferrari,2016
-Germany,Daniel Ricciardo,Red Bull Racing,2016
-Belgium,Lewis Hamilton,Mercedes,2016
-Italy,Nico Rosberg,Mercedes,2016
-Singapore,Sebastian Vettel,Ferrari,2016
-Malaysia,Max Verstappen,Red Bull Racing,2016
-Japan,Max Verstappen,Red Bull Racing,2016
-United States,Max Verstappen,Red Bull Racing,2016
-Mexico,Sebastian Vettel,Ferrari,2016
-Brazil,Max Verstappen,Red Bull Racing,2016
-Abu Dhabi,Sebastian Vettel,Ferrari,2016
-Australia,Sebastian Vettel,Ferrari,2017
-China,Max Verstappen,Red Bull Racing,2017
-Bahrain,Sebastian Vettel,Ferrari,2017
-Russia,Valtteri Bottas,Mercedes,2017
-Spain,Sebastian Vettel,Ferrari,2017
-Monaco,Sebastian Vettel,Ferrari,2017
-Canada,Sebastian Vettel,Ferrari,2017
-Azerbaijan,Lance Stroll,Williams,2017
-Austria,Valtteri Bottas,Mercedes,2017
-Great Britain,Daniel Ricciardo,Red Bull Racing,2017
-Hungary,Kimi Raikkonen,Ferrari,2017
-Belgium,Lewis Hamilton,Mercedes,2017
-Italy,Daniel Ricciardo,Red Bull Racing,2017
-Singapore,Lewis Hamilton,Mercedes,2017
-Malaysia,Sebastian Vettel,Ferrari,2017
-Japan,Max Verstappen,Red Bull Racing,2017
-United States,Max Verstappen,Red Bull Racing,2017
-Mexico,Sebastian Vettel,Ferrari,2017
-Brazil,Lewis Hamilton,Mercedes,2017
-Abu Dhabi,Valtteri Bottas,Mercedes,2017
-Australia,Fernando Alonso,McLaren,2018
-Bahrain,Pierre Gasly,Toro Rosso,2018
-China,Daniel Ricciardo,Red Bull Racing,2018
-Azerbaijan,Charles Leclerc,Sauber,2018
-Spain,Lewis Hamilton,Mercedes,2018
-Monaco,Daniel Ricciardo,Red Bull Racing,2018
-Canada,Sebastian Vettel,Ferrari,2018
-France,Sebastian Vettel,Ferrari,2018
-Austria,Max Verstappen,Red Bull Racing,2018
-Great Britain,Lewis Hamilton,Mercedes,2018
-Germany,Lewis Hamilton,Mercedes,2018
-Hungary,Daniel Ricciardo,Red Bull Racing,2018
-Belgium,Sebastian Vettel,Ferrari,2018
-Italy,Kimi Raikkonen,Ferrari,2018
-Singapore,Max Verstappen,Red Bull Racing,2018
-Russia,Max Verstappen,Red Bull Racing,2018
-Japan,Daniel Ricciardo,Red Bull Racing,2018
-United States,Max Verstappen,Red Bull Racing,2018
-Mexico,Max Verstappen,Red Bull Racing,2018
-Brazil,Max Verstappen,Red Bull Racing,2018
-Abu Dhabi,Fernando Alonso,McLaren,2018
-Australia,Valtteri Bottas,Mercedes,2019
-Bahrain,Charles Leclerc,Ferrari,2019
-China,Alex Albon,AlphaTauri,2019
-Azerbaijan,Charles Leclerc,Ferrari,2019
-Spain,Max Verstappen,Red Bull Racing,2019
-Monaco,Max Verstappen,Red Bull Racing,2019
-Canada,Sebastian Vettel,Ferrari,2019
-France,Lando Norris,McLaren,2019
-Austria,Max Verstappen,Red Bull Racing,2019
-Great Britain,Charles Leclerc,Ferrari,2019
-Germany,Max Verstappen,Red Bull Racing,2019
-Hungary,Max Verstappen,Red Bull Racing,2019
-Belgium,Lando Norris,McLaren,2019
-Italy,Charles Leclerc,Ferrari,2019
-Singapore,Sebastian Vettel,Ferrari,2019
-Russia,Sebastian Vettel,Ferrari,2019
-Japan,Valtteri Bottas,Mercedes,2019
-Mexico,Max Verstappen,Red Bull Racing,2019
-United States,Alex Albon,Red Bull Racing,2019
-Brazil,Max Verstappen,Red Bull Racing,2019
-Abu Dhabi,Nico Hulkenberg,Renault,2019
-Austria,Alex Albon,Red Bull Racing,2020
-Styria,Sergio Perez,Racing Point,2020
-Hungary,Max Verstappen,Red Bull Racing,2020
-Great Britain,Lewis Hamilton,Mercedes,2020
-70th Anniversary,Max Verstappen,Red Bull Racing,2020
-Spain,Sebastian Vettel,Ferrari,2020
-Belgium,Pierre Gasly,AlphaTauri,2020
-Italy,Pierre Gasly,AlphaTauri,2020
-Tuscany,Daniel Ricciardo,Renault,2020
-Russia,Max Verstappen,Red Bull Racing,2020
-Eifel,Nico Hulkenberg,Racing Point,2020
-Portugal,Sergio Perez,Racing Point,2020
-Emilia Romagna,Kimi Raikkonen,Alfa Romeo,2020
-Turkey,Sebastian Vettel,Ferrari,2020
-Bahrain,Romain Grosjean,Haas,2020
-Sakhir,George Russell,Mercedes,2020
-Abu Dhabi,Max Verstappen,Red Bull Racing,2020
-Bahrain,Sergio Perez,Red Bull Racing,2021
-Emilia-Romagna,Lando Norris,McLaren,2021
-Portugal,Sergio Perez,Red Bull Racing,2021
-Spain,Lewis Hamilton,Mercedes,2021
-Monaco,Sebastian Vettel,Aston Martin,2021
-Azerbaijan,Sebastian Vettel,Aston Martin,2021
-France,Max Verstappen,Red Bull Racing,2021
-Styria,Charles Leclerc,Ferrari,2021
-Austria,Lando Norris,McLaren,2021
-Great Britain,Charles Leclerc,Ferrari,2021
-Hungary,Fernando Alonso,Alpine,2021
-Belgium,Max Verstappen,Red Bull Racing,2021
-Netherlands,Sergio Perez,Red Bull Racing,2021
-Italy,Daniel Ricciardo,McLaren,2021
-Russia,Lando Norris,McLaren,2021
-Turkey,Carlos Sainz,Ferrari,2021
-United States,Max Verstappen,Red Bull Racing,2021
-Mexico,Sergio Perez,Red Bull Racing,2021
-Sao Paulo,Lewis Hamilton,Mercedes,2021
-Qatar,Fernando Alonso,Alpine,2021
-Saudi Arabia,Max Verstappen,Red Bull Racing,2021
-Abu Dhabi,Kimi Raikkonen,Alfa Romeo,2021
-Bahrain,Charles Leclerc,Ferrari,2022
-Saudi Arabia,Charles Leclerc,Ferrari,2022
-Australia,Charles Leclerc,Ferrari,2022
-Emilia-Romagna,Max Verstappen,Red Bull Racing,2022
-Miami,Max Verstappen,Red Bull Racing,2022
-Spain,Lewis Hamilton,Mercedes,2022
-Monaco,Sergio Perez,Red Bull Racing,2022
-Azerbaijan,Lewis Hamilton,Mercedes,2022
-Canada,Charles Leclerc,Ferrari,2022
-Great Britain,Sergio Perez,Red Bull Racing,2022
-Austria,Mick Schumacher,Haas,2022
-France,Carlos Sainz,Ferrari,2022
-Hungary,Max Verstappen,Red Bull Racing,2022
-Belgium,Max Verstappen,Red Bull Racing,2022
-Netherlands,Max Verstappen,Red Bull Racing,2022
-Italy,Nyck De Vries,Williams,2022
-Singapore,Sergio Perez,Red Bull Racing,2022
-Japan,Sebastian Vettel,Aston Martin,2022
-United States,Sebastian Vettel,Aston Martin,2022
-Mexico,Daniel Ricciardo,McLaren,2022
-Sao Paulo,Lewis Hamilton,Mercedes,2022
-Abu Dhabi,Sebastian Vettel,Aston Martin,2022
-Bahrain,Fernando Alonso,Aston Martin,2023
-Saudi Arabia,Max Verstappen,Red Bull Racing,2023
-Australia,Sergio Perez,Red Bull Racing,2023
-Azerbaijan,Sergio Perez,Red Bull Racing,2023
-Miami,Max Verstappen,Red Bull Racing,2023
-Monaco,Esteban Ocon,Alpine,2023
-Spain,Lewis Hamilton,Mercedes,2023
-Canada,Alex Albon,Williams,2023
-Austria,Lando Norris,McLaren,2023
-Great Britain,Lando Norris,McLaren,2023
-Hungary,Sergio Perez,Red Bull Racing,2023
-Belgium,Max Verstappen,Red Bull Racing,2023
-Netherlands,Fernando Alonso,Aston Martin,2023
-Italy,Carlos Sainz,Ferrari,2023
-Singapore,Carlos Sainz,Ferrari,2023
-Japan,Oscar Piastri,McLaren,2023
-Qatar,Oscar Piastri,McLaren,2023
-United States,Lando Norris,McLaren,2023
-Mexico,Lando Norris,McLaren,2023
-Sao Paulo,Lando Norris,McLaren,2023
-Las Vegas,Charles Leclerc,Ferrari,2023
-Abu Dhabi,Yuki Tsunoda,AlphaTauri,2023
+round,race,driver,team,year,race_id
+1,Bahrain,Fernando Alonso,Aston Martin,2023,2023_1
+2,Saudi Arabia,Max Verstappen,Red Bull Racing,2023,2023_2
+3,Australia,Sergio Perez,Red Bull Racing,2023,2023_3
+4,Azerbaijan,Sergio Perez,Red Bull Racing,2023,2023_4
+5,Miami,Max Verstappen,Red Bull Racing,2023,2023_5
+6,Monaco,Esteban Ocon,Alpine,2023,2023_6
+7,Spain,Lewis Hamilton,Mercedes,2023,2023_7
+8,Canada,Alex Albon,Williams,2023,2023_8
+9,Austria,Lando Norris,McLaren,2023,2023_9
+10,Great Britain,Lando Norris,McLaren,2023,2023_10
+11,Hungary,Sergio Perez,Red Bull Racing,2023,2023_11
+12,Belgium,Max Verstappen,Red Bull Racing,2023,2023_12
+13,Netherlands,Fernando Alonso,Aston Martin,2023,2023_13
+14,Italy,Carlos Sainz,Ferrari,2023,2023_14
+15,Singapore,Carlos Sainz,Ferrari,2023,2023_15
+16,Japan,Oscar Piastri,McLaren,2023,2023_16
+17,Qatar,Oscar Piastri,McLaren,2023,2023_17
+18,United States,Lando Norris,McLaren,2023,2023_18
+19,Mexico,Lando Norris,McLaren,2023,2023_19
+20,Sao Paulo,Lando Norris,McLaren,2023,2023_20
+21,Las Vegas,Charles Leclerc,Ferrari,2023,2023_21
+22,Abu Dhabi,Yuki Tsunoda,AlphaTauri,2023,2023_22

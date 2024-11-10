@@ -8,6 +8,7 @@ import random
 import pandas as pd
 import re
 import requests
+from tqdm import tqdm
 
 
 def get_dotd(current_year = '2024'):
@@ -106,7 +107,11 @@ def get_df_dotd(soup: BeautifulSoup):
         df_final = pd.concat([df, df_final])
 
     # Drop null values (index = 0) and rename columns
-    df_final = df_final.drop(0).rename(columns={0: 'race', 1: 'driver', 2: 'team'})
+    # df_final = df_final.drop(0).rename(columns={0: 'race', 1: 'driver', 2: 'team'})
+    df_final = df_final.rename(columns={0: 'race', 1: 'driver', 2: 'team'})
+    df_final = df_final.drop(0).reset_index(names='round')
+    df_final['year'] = df_final['year'].astype(int)
+    df_final['race_id'] = df_final['year'].astype(str) + '_' + df_final['round'].astype(str)
 
     return df_final
 
@@ -347,3 +352,57 @@ def get_number_of_races_in_season(year: int):
         return number_of_races
     else:
         raise Exception(f"Error: {response.status_code}")
+    
+
+def get_df_races_results(year:int):
+    """
+    Fetches and processes Formula 1 race results and race information for a given season year.
+
+    Parameters:
+    - year (int): The season year for which race results and details are to be fetched.
+
+    Returns:
+    - (tuple): A tuple containing:
+        - pd.DataFrame: DataFrame with race results.
+        - pd.DataFrame: DataFrame with race metadata.
+    """
+
+    number_of_races = get_number_of_races_in_season(year)
+    results_list = []
+    races_list = []
+
+    for rnd in tqdm(range(1, number_of_races + 1)):
+
+        race_id = str(year) + '_' + str(rnd)
+
+        url = f"http://ergast.com/api/f1/{str(year)}/{str(rnd)}/results.json"
+        response = requests.get(url)
+
+        if response.status_code == 200:
+
+            content = response.json()
+
+            # Pop results
+            results = content['MRData']['RaceTable']['Races'][0].pop('Results')
+            # Build a dataframe for results
+            df_result = transform_df_results(results, race_id)
+            # Store dataframe
+            results_list.append(df_result)
+
+            # Build a dataframe for races
+            df_race = pd.DataFrame(content['MRData']['RaceTable']['Races'][0]).loc['circuitId']
+            df_race['race_id'] = race_id
+            # Store dataframe
+            races_list.append(df_race)
+
+        else:
+            print(f"Error: {response.status_code}")
+
+    # Put together all races
+    df_results = pd.concat(results_list)
+    df_races = pd.concat(races_list, axis=1).T.reset_index(drop=True)
+    # Rename and sort columns
+    df_races.rename(columns={'Circuit': 'circuit_id'}, inplace=True)
+    df_races = df_races[['race_id', 'circuit_id', 'raceName', 'season', 'round', 'url', 'date']]
+
+    return df_results, df_races
