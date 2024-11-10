@@ -176,7 +176,7 @@ def get_add_circuit_info(url: str):
         return get_add_circuit_info(url)
     
 
-def transform_circuits_df(df: pd.DataFrame):
+def transform_df_circuits(df: pd.DataFrame):
     """
     Transforms the input DataFrame by extracting and formatting additional information from circuit URLs and the location column.
 
@@ -228,7 +228,7 @@ def get_df_circuit(year: int):
         content = response.json()
         circuits = content['MRData']['CircuitTable']['Circuits']
         df_circ = pd.DataFrame(circuits)
-        df = transform_circuits_df(df_circ)
+        df = transform_df_circuits(df_circ)
         return df
 
     else:
@@ -262,3 +262,88 @@ def get_df_drivers(year:int):
     else:
         print(f"Error: {response.status_code}")
         return
+    
+
+def get_df_constructors(year:int):
+    """
+    Fetches constructor data for a specified Formula 1 season and returns it as a DataFrame.
+
+    Parameters:
+    - year (int): The year of the Formula 1 season to retrieve constructor data for.
+
+    Returns:
+    - (pd.DataFrame): A DataFrame containing the constructor data for the specified year.
+    """
+   
+    url = f"http://ergast.com/api/f1/{str(year)}/constructors.json"
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+
+        content = response.json()
+        constructors = content['MRData']['ConstructorTable']['Constructors']
+        df_constructors = pd.DataFrame(constructors)
+        return df_constructors
+
+    else:
+        print(f"Error: {response.status_code}")
+        return 
+    
+
+def transform_df_results(results: list, race_id: str):
+    """
+    Transforms a list of race results into a structured DataFrame with additional derived columns.
+
+    Parameters:
+    - results (list): List of race result data, where each entry is a dictionary representing a race result.
+    - race_id (str): Identifier for the race, added as a column in the DataFrame.
+
+    Returns:
+    - (pd.DataFrame): A DataFrame containing the processed race results, with additional columns such as driver ID, constructor ID, delta position, and time.
+    """
+
+    # Create a dataframe out of the list of results
+    df = pd.DataFrame(results)
+
+    # Create a race_id column
+    df.insert(1, 'race_id', race_id)
+
+    # Set integer types for operation
+    df['position'] = df['position'].astype(int)
+    df['grid'] = df['grid'].astype(int)
+
+    # Create relevant columns
+    df['driver_id'] = df['Driver'].apply(pd.Series)['driverId']
+    df['constructor_id'] = df['Constructor'].apply(pd.Series)['constructorId']
+    df['delta_pos'] = df['grid'] - df['position']
+    df['time'] = df['Time'].apply(pd.Series)['time']
+
+    # Drop unnecesary columns
+    df.drop(columns=['number', 'Driver', 'Constructor', 'Time', 'FastestLap'], inplace=True)
+
+    return df
+
+
+def get_number_of_races_in_season(year: int):
+    """
+    Fetches the number of races in the specified Formula 1 season.
+
+    Parameters:
+    year (int): The year of the F1 season to check.
+
+    Returns:
+    int: The number of races in the season.
+
+    Raises:
+    Exception: If the API request fails with a non-200 status code.
+    """
+    url = f"http://ergast.com/api/f1/{str(year)}.json"
+    response = requests.get(url, timeout=5)
+
+    if response.status_code == 200:
+        content = response.json()
+        number_of_races = int(content['MRData']['total'])
+        return number_of_races
+    else:
+        raise Exception(f"Error: {response.status_code}")
