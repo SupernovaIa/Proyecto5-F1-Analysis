@@ -174,3 +174,91 @@ def get_add_circuit_info(url: str):
 
         # Call function again with corrected link
         return get_add_circuit_info(url)
+    
+
+def transform_circuits_df(df: pd.DataFrame):
+    """
+    Transforms the input DataFrame by extracting and formatting additional information from circuit URLs and the location column.
+
+    Parameters:
+    - df (pd.DataFrame): The original DataFrame containing circuit data with columns including 'url' and 'Location'.
+
+    Returns:
+    - (pd.DataFrame): The transformed DataFrame with additional columns for 'capacity', 'website', 'architect', and separate location information, while removing the original 'Location' column.
+    """
+    # Get additional info from circuit Wikipedia link
+    df_add_info = df['url'].apply(get_add_circuit_info).apply(pd.Series)
+
+    # Renaming columns
+    df_add_info = df_add_info.rename(columns={0: 'capacity', 1: 'website', 2: 'architect'})
+    # Formatting values properly
+    df_add_info['capacity'] = df_add_info['capacity'].apply(lambda x: int(re.sub(r'[^0-9]', '', re.sub(r'\[.*?\]', '', x.split('(')[0]))) if re.search(r'\d+', x) else None)
+    df_add_info['website'] = df_add_info['website'].apply(lambda x: re.search(r'http[s]?://\S+|www\.\S+', x).group(0) if re.search(r'http[s]?://\S+|www\.\S+', x) else None)
+    df_add_info['architect'] = df_add_info['architect'].apply(lambda x: re.sub(r'\[.*?\]', '', x).strip() if pd.notnull(x) else None)
+
+    # Extraction location info
+    df_location = df['Location'].apply(pd.Series)
+    # Now we don't need location column
+    df.drop(columns='Location', inplace=True)
+
+    # Putting everything together
+    df = pd.concat([df, df_add_info, df_location], axis=1)
+
+    return df
+
+
+def get_df_circuit(year: int):
+    """
+    Fetches circuit data for a specified Formula 1 season and returns it as a transformed DataFrame.
+
+    Parameters:
+    - year (int): The year of the Formula 1 season to retrieve circuit data for.
+
+    Returns:
+    - (pd.DataFrame): A DataFrame containing the transformed circuit data for the specified year.
+    """
+
+    # Get F1 circuit information from ergast API
+    url = f'http://ergast.com/api/f1/{str(year)}/circuits.json'
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+
+        content = response.json()
+        circuits = content['MRData']['CircuitTable']['Circuits']
+        df_circ = pd.DataFrame(circuits)
+        df = transform_circuits_df(df_circ)
+        return df
+
+    else:
+        print(f"Error: {response.status_code}")
+        return
+
+
+def get_df_drivers(year:int):
+    """
+    Fetches driver data for a specified Formula 1 season and returns it as a DataFrame with renamed columns.
+
+    Parameters:
+    - year (int): The year of the Formula 1 season to retrieve driver data for.
+
+    Returns:
+    - (pd.DataFrame): A DataFrame containing driver data with columns 'first_name' and 'last_name'.
+    """
+
+    url = f"http://ergast.com/api/f1/{str(year)}/drivers.json"
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+
+        content = response.json()
+        drivers = content['MRData']['DriverTable']['Drivers']
+        df_drivers = pd.DataFrame(drivers)
+        df_drivers.rename(columns={'givenName': 'first_name', 'familyName': 'last_name'}, inplace=True)
+        return df_drivers
+
+    else:
+        print(f"Error: {response.status_code}")
+        return
