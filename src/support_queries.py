@@ -254,30 +254,19 @@ GROUP BY d.driverid
 ORDER BY total_positions_gained DESC ;
 """
 
-# Leclerc Specifc
+# Distribution of gain/loss
 query_11 = """
-SELECT concat(d.first_name, ' ', d.last_name) AS Driver, res.delta_pos, COUNT(*) AS occurrences
+SELECT 
+    concat(d.first_name, ' ', d.last_name) AS Driver, 
+    res.delta_pos
 FROM results res
 INNER JOIN drivers d ON res.driver_id = d.driverid
 INNER JOIN races r ON res.race_id = r.race_id
-WHERE d.last_name = 'Leclerc'
-GROUP BY d.first_name, d.last_name, res.delta_pos
-ORDER BY d.last_name, res.delta_pos DESC ;
-"""
-
-# Verstappen specific
-query_12 = """
-SELECT concat(d.first_name, ' ', d.last_name) AS Driver, res.delta_pos, COUNT(*) AS occurrences
-FROM results res
-INNER JOIN drivers d ON res.driver_id = d.driverid
-INNER JOIN races r ON res.race_id = r.race_id
-WHERE d.last_name = 'Verstappen' 
-GROUP BY d.first_name, d.last_name, res.delta_pos
-ORDER BY d.last_name, res.delta_pos DESC ;
+ORDER BY Driver, res.delta_pos ;
 """
 
 # Pole position effectiveness
-query_13 = """
+query_12 = """
 SELECT concat(d.first_name, ' ', d.last_name) AS Driver, r.racename, res.position
 FROM results res
 INNER JOIN drivers d ON res.driver_id = d.driverid
@@ -285,8 +274,8 @@ INNER JOIN races r ON res.race_id = r.race_id
 WHERE res.grid = 1 ;
 """
 
-# Championship evolution
-query_14 = """
+# Drivers championship evolution
+query_13 = """
 SELECT r.round , concat(d.first_name, ' ', d.last_name) AS Driver, 
        SUM(res.points) OVER (PARTITION BY res.driver_id ORDER BY r.date) AS cumulative_points
 FROM results res
@@ -294,3 +283,14 @@ INNER JOIN drivers d ON res.driver_id = d.driverid
 INNER JOIN races r ON res.race_id = r.race_id
 ORDER BY r.date, Driver ;
 """
+
+# Constructor championship evolution
+query_14 = """
+SELECT 
+    r.round, 
+    con.name AS Constructor, 
+    SUM(res.points) OVER (PARTITION BY res.constructor_id ORDER BY r.date) AS cumulative_points
+FROM results res
+INNER JOIN constructors con ON res.constructor_id = con.constructorid
+INNER JOIN races r ON res.race_id = r.race_id
+ORDER BY r.date, Constructor;"""
