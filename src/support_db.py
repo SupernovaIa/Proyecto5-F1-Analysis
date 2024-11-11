@@ -168,7 +168,7 @@ def sql_query(query: str):
     try:
         # Establish the connection
         connection = psycopg2.connect(
-            database='supermarkets',
+            database='formula_one',
             user='my_user',
             password='admin',
             host='localhost',

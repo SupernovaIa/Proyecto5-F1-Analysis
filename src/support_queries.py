@@ -3,6 +3,7 @@ Creation queries
 -----------------
 """
 
+
 # Circuits
 query_creation_circuits = """
 CREATE TABLE IF NOT EXISTS circuits (
@@ -94,6 +95,7 @@ Insertion queries
 -----------------
 """
 
+
 # Insert query for circuits table
 query_insertion_circuits = """
 INSERT INTO circuits (
@@ -142,3 +144,153 @@ queries_insertion = [
     query_insertion_constructors,
     query_insertion_results
     ]
+
+
+"""
+Select queries
+--------------
+"""
+
+# Driver of the day count
+query_1 = """
+SELECT r.driver , COUNT(*) AS times_chosen
+FROM races r
+GROUP BY r.driver 
+ORDER BY times_chosen DESC ;
+"""
+
+# Drivers championship
+query_2 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, SUM(res.points) AS total_points
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+GROUP BY d.driverid
+ORDER BY total_points DESC
+LIMIT 10 ;
+"""
+
+# Constructors championship
+query_3 = """
+SELECT con.name, SUM(res.points) AS total_points
+FROM results res
+INNER JOIN constructors con ON res.constructor_id = con.constructorid
+INNER JOIN races r ON res.race_id = r.race_id
+GROUP BY con.constructorid
+ORDER BY total_points DESC ;
+"""
+
+# Alonso's results
+query_4 = """
+SELECT r.racename AS Name, res.position AS Position
+FROM results res
+INNER JOIN races r ON res.race_id = r.race_id
+WHERE res.driver_id = 'alonso'
+ORDER BY r.date ;
+"""
+
+# Positions gained in Bahrain (2023_1)
+query_5 = """
+SELECT 
+	concat(d.first_name, ' ', d.last_name) AS Driver, 
+	res.grid AS GridPosition, 
+	res.position AS EndPosition, 
+	res.delta_pos AS PositionsGained
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+WHERE res.race_id = '2023_1' ;
+"""
+
+# Number of DNF
+query_6 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, COUNT(*) AS dnf_count
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+WHERE res.status != 'Finished'
+GROUP BY d.driverid
+ORDER BY dnf_count DESC ;
+"""
+
+# Points per race for every driver
+query_7 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, round(AVG(res.points), 2) AS avg_points
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+GROUP BY d.driverid
+ORDER BY avg_points DESC ;
+"""
+
+# Number of wins
+query_8 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, COUNT(*) AS wins
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+WHERE res.position = 1
+GROUP BY d.driverid
+ORDER BY wins DESC ;
+"""
+
+# Number of podiums
+query_9 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, COUNT(*) AS wins
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+WHERE res.position <= 3
+GROUP BY d.driverid
+ORDER BY wins DESC ;
+"""
+
+# Gained positions in the whole season
+query_10 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, SUM(res.delta_pos) AS total_positions_gained
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+GROUP BY d.driverid
+ORDER BY total_positions_gained DESC ;
+"""
+
+# Leclerc Specifc
+query_11 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, res.delta_pos, COUNT(*) AS occurrences
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+WHERE d.last_name = 'Leclerc'
+GROUP BY d.first_name, d.last_name, res.delta_pos
+ORDER BY d.last_name, res.delta_pos DESC ;
+"""
+
+# Verstappen specific
+query_12 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, res.delta_pos, COUNT(*) AS occurrences
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+WHERE d.last_name = 'Verstappen' 
+GROUP BY d.first_name, d.last_name, res.delta_pos
+ORDER BY d.last_name, res.delta_pos DESC ;
+"""
+
+# Pole position effectiveness
+query_13 = """
+SELECT concat(d.first_name, ' ', d.last_name) AS Driver, r.racename, res.position
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+WHERE res.grid = 1 ;
+"""
+
+# Championship evolution
+query_14 = """
+SELECT r.round , concat(d.first_name, ' ', d.last_name) AS Driver, 
+       SUM(res.points) OVER (PARTITION BY res.driver_id ORDER BY r.date) AS cumulative_points
+FROM results res
+INNER JOIN drivers d ON res.driver_id = d.driverid
+INNER JOIN races r ON res.race_id = r.race_id
+ORDER BY r.date, Driver ;
+"""
