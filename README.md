@@ -4,11 +4,13 @@
 
 ## 📜 Project Overview
 
-This project focuses on using data sourced from APIs enriched with web scraping to obtain information on the 2023 F1 season. The main data source is the Ergast API, with additional scraping from Wikipedia to enrich circuit information and the official F1 website to gather data on the "Driver of the Day" results.
+This project leverages data obtained from APIs, complemented by web scraping, to gather detailed information on the 2023 F1 season. The primary data sources are the Ergast API and the FastF1 library, with additional data enrichment from Wikipedia for circuit details and the official F1 website for "Driver of the Day" results.
 
-The Ergast API provides a vast amount of historical data for all F1 seasons, including drivers, constructors, lap times, and complete race results.
+The Ergast API offers a comprehensive archive of historical data across all F1 seasons, covering drivers, constructors, lap times, and full race results.
 
-Important note: Sprint races have not been considered in the current version of the project.
+The FastF1 library provides both real-time and historical data through its backend or the F1Timing APIs. It also supports access to Ergast for historical data prior to 2018, making it especially valuable for creating visualizations and offering data frame manipulation methods tailored for Formula 1 analytics.
+
+**Important note**: Sprint races have not been included in this version of the project.
 
 ### Specific Objectives
 - **Data Extraction**: Extract information using the mentioned API and websites.
@@ -25,6 +27,7 @@ Important note: Sprint races have not been considered in the current version of 
 ```plaintext
 Proyecto5-AnalisisF1
 ├── data/                               # Folder for storing generated datasets
+├── imgs/                               # Folder for storing generated visuals
 ├── notebooks/                          # Jupyter Notebooks for different phases of the project
 │   ├── 01-extract.ipynb                # Notebook for data extraction
 │   ├── 02-database.ipynb               # Notebook for database creation and data management
@@ -64,6 +67,7 @@ This project was developed using **Python 3.12**. To set up the project environm
    - [**Requests** (v2.32.3)](https://docs.python-requests.org/en/latest/): For making HTTP requests to interact with web resources.
    - [**Selenium** (v4.26.1)](https://www.selenium.dev/documentation/): For automating web browser interactions and web scraping.
    - [**tqdm** (v4.66.4)](https://tqdm.github.io/): For creating progress bars to monitor the progress of loops and processes.
+   - [**FastF1**](https://theoehrly.github.io/Fast-F1/): A library specifically designed for accessing and analyzing Formula 1 data, providing real-time and historical information via F1Timing APIs, with built-in support for data visualization and manipulation tailored for F1 analytics.
 
    To install all dependencies, run:
    ```bash

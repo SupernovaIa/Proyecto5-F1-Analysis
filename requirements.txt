@@ -7,3 +7,4 @@ tqdm==4.66.4
 matplotlib==3.9.2
 seaborn==0.13.2
 numpy==1.26.4
+fastf1==3.4.3
