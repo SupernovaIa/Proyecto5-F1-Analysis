@@ -67,7 +67,7 @@ This project was developed using **Python 3.12**. To set up the project environm
    - [**Requests** (v2.32.3)](https://docs.python-requests.org/en/latest/): For making HTTP requests to interact with web resources.
    - [**Selenium** (v4.26.1)](https://www.selenium.dev/documentation/): For automating web browser interactions and web scraping.
    - [**tqdm** (v4.66.4)](https://tqdm.github.io/): For creating progress bars to monitor the progress of loops and processes.
-   - [**FastF1**](https://theoehrly.github.io/Fast-F1/): A library specifically designed for accessing and analyzing Formula 1 data, providing real-time and historical information via F1Timing APIs, with built-in support for data visualization and manipulation tailored for F1 analytics.
+   - [**FastF1** (v3.4.3)](https://theoehrly.github.io/Fast-F1/): A library specifically designed for accessing and analyzing Formula 1 data, providing real-time and historical information via F1Timing APIs, with built-in support for data visualization and manipulation tailored for F1 analytics.
 
    To install all dependencies, run:
    ```bash
